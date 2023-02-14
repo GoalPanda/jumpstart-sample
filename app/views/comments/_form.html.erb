@@ -1,0 +1,33 @@
+<%= form_for([comment.post, comment]) do |form| %>
+  <%= render "shared/error_messages", resource: form.object %>
+
+  <div class="form-group">
+    <%= form.label :parent_id %>
+    <%= form.number_field :parent_id, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :user_id %>
+    <%= form.number_field :user_id, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :message %>
+    <%= form.text_area :message, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :post_id %>
+    <%= form.text_field :post_id, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.button button_text(form.send(:submit_default_value)), class: "btn btn-primary" %>
+
+    <% if form.object.new_record? %>
+      <%= link_to t("cancel"), comments_path, class: "btn btn-white" %>
+    <% else %>
+      <%= link_to t("cancel"), comment_path(@comment), class: "btn btn-white" %>
+    <% end %>
+  </div>
+<% end %>

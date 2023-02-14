@@ -1,0 +1,8 @@
+<div id="<%= dom_id(project, :index) %>">
+  <%= turbo_stream_from project %>
+  <%= render project %>
+  <%= link_to "View", project, class: "btn btn-white" %>
+  <%= link_to "Components", project_components_url(project), class: "btn btn-white"  %>
+  <%= link_to "Posts", project_posts_url(project), class: "btn btn-white"  %>
+</div>
+

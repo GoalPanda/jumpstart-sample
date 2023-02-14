@@ -1,0 +1,6 @@
+<div id="<%= dom_id(position_category, :index) %>">
+  <%= turbo_stream_from position_category %>
+  <%= render position_category %>
+  <%= link_to "View", position_category, class: "btn btn-white" %>
+</div>
+

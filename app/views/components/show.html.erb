@@ -1,0 +1,24 @@
+<%= content_for :title, "Components ##{@component.id}" %>
+<%= turbo_stream_from @component %>
+
+
+
+<div class="container px-4 mx-auto my-8">
+  <div class="flex items-center justify-between mb-4">
+    <h1 class="h3">
+      <%= link_to "Components", components_path, class: "text-black" %>
+      <span class="text-gray-400 font-light mx-2">\</span>
+      Component #<%= @component.id %>
+    </h1>
+    <%= link_to t("edit"), edit_project_component_path(@project), class: "btn btn-white" %>
+  </div>
+
+  <%= link_to "Back to Projects", projects_path, class: "btn btn-white" %>
+  <%= link_to "Back to Project", @project, class: "btn btn-white" %>
+
+  <div class="p-8 bg-white rounded shadow">
+    <%= render @component %>
+  </div>
+
+  <%= link_to t("shared.scaffold.new.title", model: "Activity"), new_component_activity_path(@component), class: "btn btn-white" %>
+</div>

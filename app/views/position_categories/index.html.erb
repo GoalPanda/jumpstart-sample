@@ -1,0 +1,39 @@
+<%= content_for :title, "Position Categories" %>
+<%= turbo_stream_from :position_categories %>
+
+<div class="container px-4 mx-auto my-8">
+  <div class="flex items-center justify-between mb-4">
+    <div>
+      <h1 class="h3">Position Categories</h1>
+
+      <div class="text-sm font-medium">
+        <span class="text-gray-500">Sort by:</span>
+        <%= sortable @position_categories, :identificator, "Identificator", class: "text-gray-700 mr-1" %>
+        <%= sortable @position_categories, :name, "Name", class: "text-gray-700 mr-1" %>
+        <%= sortable @position_categories, :description, "Description", class: "text-gray-700 mr-1" %>
+        <%= sortable @position_categories, :value, "Value", class: "text-gray-700 mr-1" %>
+        <%= sortable @position_categories, :account_id, "Account", class: "text-gray-700 mr-1" %>
+      </div>
+    </div>
+
+    <%= link_to t("shared.scaffold.new.title", model: "Position Category"), new_position_category_path, class: "btn btn-white" %>
+  </div>
+
+  <%= tag.div id: ("position_categories" if first_page?), class: "bg-white rounded-md shadow p-6 space-y-8" do %>
+    <%= render partial: "position_categories/index", collection: @position_categories, as: :position_category, cached: true %>
+
+    <div class="hidden only:flex flex-col items-center justify-between lg:flex-row">
+      <%= image_tag "empty.svg", class: "mb-4 lg:w-1/2" %>
+      <div class="flex-1 text-center">
+        <p class="mb-4 h3">Create your first Position Category</p>
+        <%= link_to t("shared.scaffold.new.title", model: "Position Category"), new_position_category_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @pagy.pages > 1 %>
+    <div class="my-6 text-center">
+      <%== pagy_nav(@pagy) %>
+    </div>
+  <% end %>
+</div>

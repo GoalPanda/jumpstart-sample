@@ -1,0 +1,73 @@
+<%= form_for([@employee_position.position_group, @employee_position]) do |f| %>
+  <% if @employee_position.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@employee_position.errors.count, "error") %> prohibited this employee_position from being saved:</h2>
+
+      <ul>
+      <% @employee_position.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :identificator %><br />
+    <%= f.number_field :identificator %>
+  </div>
+  <div class="field">
+    <%= f.label :group %><br />
+    <%= f.number_field :group %>
+  </div>
+  <div class="field">
+    <%= f.label :positionCategory %><br />
+    <%= f.number_field :positionCategory %>
+  </div>
+  <div class="field">
+    <%= f.label :positionClassification %><br />
+    <%= f.number_field :positionClassification %>
+  </div>
+  <div class="field">
+    <%= f.label :positionType %><br />
+    <%= f.number_field :positionType %>
+  </div>
+  <div class="field">
+    <%= f.label :positionCostAuto %><br />
+    <%= f.text_field :positionCostAuto %>
+  </div>
+  <div class="field">
+    <%= f.label :positionCostFixed %><br />
+    <%= f.text_field :positionCostFixed %>
+  </div>
+  <div class="field">
+    <%= f.label :positionCosDefiner %><br />
+    <%= f.check_box :positionCosDefiner %>
+  </div>
+  <div class="field">
+    <%= f.label :positionDescriptionAuto %><br />
+    <%= f.number_field :positionDescriptionAuto %>
+  </div>
+  <div class="field">
+    <%= f.label :positionDescriptionFixed %><br />
+    <%= f.number_field :positionDescriptionFixed %>
+  </div>
+  <div class="field">
+    <%= f.label :positionDescriptionDefiner %><br />
+    <%= f.check_box :positionDescriptionDefiner %>
+  </div>
+  <div class="field">
+    <%= f.label :positionItem %><br />
+    <%= f.text_field :positionItem %>
+  </div>
+  <div class="field">
+    <%= f.label :positionCost %><br />
+    <%= f.number_field :positionCost %>
+  </div>
+  <div class="field">
+    <%= f.label :position_group %><br />
+    <%= f.text_field :position_group %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

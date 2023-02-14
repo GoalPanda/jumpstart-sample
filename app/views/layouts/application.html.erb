@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html class="h-full antialiased" lang="<%= I18n.locale %>">
+  <head>
+    <title>
+      <% if content_for?(:title) %>
+        <%= yield :title %> |
+      <% end %>
+      <%= Jumpstart.config.application_name %>
+    </title>
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= viewport_meta_tag %>
+
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
+
+    <%# Be sure to add your own custom favicons %>
+    <%= render "shared/favicons" %>
+    <%= render "shared/payments_dependencies" %>
+
+    <%# Replace this with your FontAwesome Pro Kit code %>
+    <script defer src="https://kit.fontawesome.com/0e5ab6a736.js" crossorigin="anonymous"></script>
+
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+    <%= yield :head %>
+  </head>
+
+
+  <body>
+    <div>
+      <div class="relative z-40 md:hidden" role="dialog" aria-modal="true">
+        <div data-menu-target="mobileMenu" class="hidden fixed inset-0 bg-gray-600 bg-opacity-75"></div>
+
+        <div class="hidden fixed inset-0 z-40 flex">
+          <div class="relative flex w-full max-w-xs flex-1 flex-col bg-gray-800 pt-5 pb-4">
+            <div class="absolute top-0 right-0 -mr-12 pt-2">
+              <button type="button" id="sidebar-close" class="ml-1 flex h-10 w-10 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" data-action="click->toggle#toggle touch->toggle#toggle">
+                <span class="sr-only">Close sidebar</span>
+                <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <div class="flex flex-shrink-0 items-center px-4">
+              <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
+            </div>
+            <div class="mt-5 h-0 flex-1 overflow-y-auto">
+              <nav class="space-y-1 px-2">
+                <a href="#" class="bg-gray-900 text-white group flex items-center px-2 py-4 text-sm font-medium"><svg class="text-gray-300 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" /></svg>Desktop</a>
+                <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center px-2 py-4 text-sm font-medium"><svg class="text-gray-400 group-hover:text-gray-300 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" /></svg>Desktop</a>
+                <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center px-2 py-4 text-sm font-medium"><svg class="text-gray-400 group-hover:text-gray-300 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" /></svg>Desktop</a>
+              </nav>
+            </div>
+          </div>
+
+          <div class="w-14 flex-shrink-0" aria-hidden="true">
+            <!-- Dummy element to force sidebar to shrink to fit close icon -->
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+      <!-- Static sidebar for desktop -->
+      <div class="hidden md:fixed md:inset-y-0 md:flex md:w-64 md:flex-col">
+        <!-- Sidebar component, swap this element with another sidebar if you like -->
+        <div class="flex min-h-0 flex-1 flex-col bg-gray-800">
+          <div class="flex h-16 flex-shrink-0 items-center bg-gray-900 px-4">
+            <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
+          </div>
+
+          <div class="flex flex-1 flex-col overflow-y-auto">
+            <nav class="flex-1 space-y-0 py-4">
+              <a href="#" class="bg-gray-900 text-white group flex items-center px-2 py-4 text-sm font-medium"><svg class="text-gray-300 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" /></svg>Desktop</a>
+              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center px-2 py-4 text-sm font-medium"><svg class="text-gray-400 group-hover:text-gray-300 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" /></svg>Desktop</a>
+              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white group flex items-center px-2 py-4 text-sm font-medium"><svg class="text-gray-400 group-hover:text-gray-300 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" /></svg>Desktop</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+      <div class="flex flex-col md:pl-64">
+        <nav class="flex flex-wrap items-center justify-between px-4 py-2 bg-white border-b border-gray-200 text-sm font-medium" data-controller="toggle">
+  <div class="flex items-center flex-shrink-0 mr-6">
+    <%= link_to user_root_path do %>
+    <%# render_svg "logo", styles: "fill-current text-slate-700 hover:text-slate-800" %>
+    <h3 class="text-gray-700">INTEGRATOR</h3>
+    <span class="sr-only">
+      <%= Jumpstart.config.application_name %></span>
+    <% end %>
+  </div>
+  
+  <div class="block lg:hidden">
+    <button type="button" id="sidebar-open" class="flex items-center p-3 text-gray-500 lg:hidden focus:outline-none focus:text-gray-700" data-action="click->toggle#toggle touch->toggle#toggle">
+      <svg class="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <title>Menu</title>
+        <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+      </svg>
+    </button>
+  </div>
+
+  <div class="flex-grow hidden w-full pb-6 lg:flex lg:w-auto lg:pb-0" data-toggle-target="toggleable">
+    <div class="lg:flex-grow">
+      <%# render "shared/left_nav" %>
+      <!-- Links to scaffolds -->
+    </div>
+    <div>
+      <%= render "shared/right_nav" %>
+      <% if user_signed_in? %>
+      <div class="hidden lg:inline-block">
+        <%= render "shared/notifications" %>
+      </div>
+      <!-- Mobile menu -->
+      <div class="lg:hidden mt-2 pt-4 pb-2 border-t border-gray-200">
+        <div class="flex items-center px-2">
+          <div class="flex-shrink-0">
+            <%= account_avatar current_account, include_user: true, class: "rounded-full h-10 w-10" %>
+          </div>
+          <div class="ml-3">
+            <div class="text-base font-medium text-gray-800">
+              <%= current_account.name %>
+            </div>
+          </div>
+          <%= link_to notifications_path, class: "ml-auto bg-white flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" do %>
+          <span class="sr-only">View notifications</span>
+          <svg class="h-6 w-6" x-description="Heroicon name: outline/bell" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+          </svg>
+          <% end %>
+        </div>
+        <div class="mt-3 space-y-1">
+          <%= link_to "Nombre", edit_user_registration_path, class: 'block p-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100' %>
+          <%= link_to "Nombre", accounts_path, class: 'block p-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100' %>
+          <% if current_user.admin? %>
+          <%= link_to "mane", admin_root_path, class: 'block p-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100', data: { turbo: false } %>
+          <% end %>
+          <%= link_to "mane", destroy_user_session_path, method: :delete, class: 'block p-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100' %>
+        </div>
+      </div>
+      <!-- Main menu -->
+      <div class="hidden lg:inline-flex z-10 items-center leading-none text-gray-700 no-underline align-middle rounded hover:text-gray-800 hover:bg-white">
+        <div class="relative" data-controller="dropdown">
+          <div data-action="click->dropdown#toggle click@window->dropdown#hide touch->dropdown#toggle touch@window->dropdown#hide" role="button" class="inline-block select-none" aria-label="Profile Menu">
+            <span class="flex items-center text-gray-700 appearance-none">
+              <%= account_avatar current_account, include_user: true, class: "rounded-full h-8 w-8" %>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="w-4 h-4">
+                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"></path>
+              </svg>
+            </span>
+          </div>
+          <div data-dropdown-target="menu" class="z-20 hidden mt-2 lg:absolute lg:right-0 dropdown-menu">
+            <div class="overflow-hidden bg-white border border-gray-200 rounded shadow-md">
+              <%= link_to current_account.name, current_account, class: 'border-b border-gray-200 no-underline block px-6 py-3 font-semibold text-base text-gray-800 bg-white hover:bg-primary-50 transition ease-in-out duration-200 whitespace-nowrap' %>
+              <%= link_to "name", edit_user_registration_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white hover:bg-primary-50 transition ease-in-out duration-200 whitespace-nowrap' %>
+              <%= link_to "name", account_password_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-50 transition ease-in-out duration-200 whitespace-nowrap' %>
+              <%= link_to "name", user_connected_accounts_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-50 transition ease-in-out duration-200 whitespace-nowrap' if Devise.omniauth_configs.any? %>
+              <%= link_to "name", subscriptions_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-50 transition ease-in-out duration-200 whitespace-nowrap' if Jumpstart.config.payments_enabled? %>
+              <%= link_to "name", accounts_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-50 transition ease-in-out duration-200 whitespace-nowrap' %>
+              <%#= link_to t(".api_tokens"), api_tokens_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-50 transition ease-in-out duration-200 whitespace-nowrap' if Jumpstart.config.payments_enabled? %>
+              <!--
+                <div class="px-6 py-3 text-xs font-bold text-gray-800 uppercase bg-white border-t border-gray-200">Accounts</div>
+                -->
+              <% if other_accounts.any? %>
+              <div class="px-6 py-3 text-xs font-bold text-gray-800 uppercase bg-white border-t border-gray-200">Switch Account</div>
+              <% current_user.accounts.order(name: :asc).where.not(id: current_account.id).each do |account| %>
+              <%= switch_account_button account, data: { controller: :accounts, action: "ajax:success->accounts#reconnect" }, class: 'block w-full text-left no-underline px-6 py-3 text-gray-800 bg-white hover:bg-primary-50 transition ease-in-out duration-200 whitespace-nowrap cursor-pointer' %>
+              <% end %>
+              <% end %>
+              <% if current_user.admin? %>
+              <div class="px-6 py-3 text-xs font-bold text-gray-800 uppercase bg-white border-t border-gray-200">
+                <%= "admin" %>
+              </div>
+              <%= link_to t"Log IN", admin_root_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-50 transition ease-in-out duration-200 whitespace-nowrap', target: :_blank, data: { turbo: false } %>
+              <%= link_to 'Sidekiq', admin_sidekiq_web_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-50 transition ease-in-out duration-200 whitespace-nowrap', target: :_blank, data: { turbo: false } if defined?(::Sidekiq) %>
+              <% end %>
+              <% if Rails.env.development? %>
+              <div class="px-6 py-3 text-xs font-bold text-gray-800 uppercase bg-white border-t border-gray-200">Development</div>
+              <%= link_to 'Jumpstart Config', jumpstart_path(script_name: nil), class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-50 transition ease-in-out duration-200 whitespace-nowrap', data: { turbo: false } %>
+              <%= link_to 'Jumpstart Docs', jumpstart.docs_path, class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-50 transition ease-in-out duration-200 whitespace-nowrap', target: :_blank, data: { turbo: false } %>
+              <%= link_to 'Letter Opener', letter_opener_web_path(script_name: nil), class: 'no-underline block px-6 py-3 text-gray-800 bg-white  hover:bg-primary-50 transition ease-in-out duration-200 whitespace-nowrap', target: :_blank, data: { turbo: false } %>
+              <% end %>
+              <%= button_to "Sign Up", destroy_user_session_path, method: :delete, class: 'w-full text-left font-medium cursor-pointer px-6 py-3 border-t border-gray-200 text-gray-800 bg-white hover:bg-primary-50 transition ease-in-out duration-200 whitespace-nowrap' %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% else %>
+      <%= link_to "Log IN", new_user_session_path, class: 'nav-link' %>
+      <%= link_to "SIGN UP", new_user_registration_path, class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</nav>
+
+        <main class="flex-1">
+          <div class="py-6">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
+              <h1 class="text-2xl font-semibold text-gray-900"><%= controller.controller_name.upcase %></h1>
+            </div>
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
+              <!-- Replace with your content -->
+              <div class="py-4">
+                <div class="h-100 rounded-lg border-2 border-line border-gray-200 p-4">
+                  
+                  <%= yield %>
+
+
+                </div>
+              </div>
+              <!-- /End replace -->
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Identificator:</b>
+  <%= @employee_position.identificator %>
+</p>
+
+<p>
+  <b>Group:</b>
+  <%= @employee_position.group %>
+</p>
+
+<p>
+  <b>Positioncategory:</b>
+  <%= @employee_position.positionCategory %>
+</p>
+
+<p>
+  <b>Positionclassification:</b>
+  <%= @employee_position.positionClassification %>
+</p>
+
+<p>
+  <b>Positiontype:</b>
+  <%= @employee_position.positionType %>
+</p>
+
+<p>
+  <b>Positioncostauto:</b>
+  <%= @employee_position.positionCostAuto %>
+</p>
+
+<p>
+  <b>Positioncostfixed:</b>
+  <%= @employee_position.positionCostFixed %>
+</p>
+
+<p>
+  <b>Positioncosdefiner:</b>
+  <%= @employee_position.positionCosDefiner %>
+</p>
+
+<p>
+  <b>Positiondescriptionauto:</b>
+  <%= @employee_position.positionDescriptionAuto %>
+</p>
+
+<p>
+  <b>Positiondescriptionfixed:</b>
+  <%= @employee_position.positionDescriptionFixed %>
+</p>
+
+<p>
+  <b>Positiondescriptiondefiner:</b>
+  <%= @employee_position.positionDescriptionDefiner %>
+</p>
+
+<p>
+  <b>Positionitem:</b>
+  <%= @employee_position.positionItem %>
+</p>
+
+<p>
+  <b>Positioncost:</b>
+  <%= @employee_position.positionCost %>
+</p>
+
+<p>
+  <b>Position group:</b>
+  <%= @employee_position.position_group %>
+</p>
+
+
+<%= link_to 'Edit', edit_position_group_employee_position_path(@employee_position.position_group, @employee_position) %> |
+<%= link_to 'Back', position_group_employee_positions_path(@employee_position.position_group) %>

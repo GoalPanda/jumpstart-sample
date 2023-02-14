@@ -1,0 +1,49 @@
+<h1>Listing employee_positions</h1>
+
+<table>
+  <tr>
+    <th>Identificator</th>
+    <th>Group</th>
+    <th>Positioncategory</th>
+    <th>Positionclassification</th>
+    <th>Positiontype</th>
+    <th>Positioncostauto</th>
+    <th>Positioncostfixed</th>
+    <th>Positioncosdefiner</th>
+    <th>Positiondescriptionauto</th>
+    <th>Positiondescriptionfixed</th>
+    <th>Positiondescriptiondefiner</th>
+    <th>Positionitem</th>
+    <th>Positioncost</th>
+    <th>Position group</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @employee_positions.each do |employee_position| %>
+  <tr>
+    <td><%= employee_position.identificator %></td>
+    <td><%= employee_position.group %></td>
+    <td><%= employee_position.positionCategory %></td>
+    <td><%= employee_position.positionClassification %></td>
+    <td><%= employee_position.positionType %></td>
+    <td><%= employee_position.positionCostAuto %></td>
+    <td><%= employee_position.positionCostFixed %></td>
+    <td><%= employee_position.positionCosDefiner %></td>
+    <td><%= employee_position.positionDescriptionAuto %></td>
+    <td><%= employee_position.positionDescriptionFixed %></td>
+    <td><%= employee_position.positionDescriptionDefiner %></td>
+    <td><%= employee_position.positionItem %></td>
+    <td><%= employee_position.positionCost %></td>
+    <td><%= employee_position.position_group %></td>
+    <td><%= link_to 'Show', [employee_position.position_group, employee_position] %></td>
+    <td><%= link_to 'Edit', edit_position_group_employee_position_path(employee_position.position_group, employee_position) %></td>
+    <td><%= link_to 'Destroy', [employee_position.position_group, employee_position], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Employee position', new_position_group_employee_position_path(params[:position_group_id]) %>

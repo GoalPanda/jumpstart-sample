@@ -1,0 +1,46 @@
+<%= content_for :title, "Components" %>
+<%= turbo_stream_from :components %>
+
+<div class="container px-4 mx-auto my-8">
+  <%= link_to "Back to Projects", projects_path, class: "btn btn-white" %>
+  <%= link_to "Back to Project", @project, class: "btn btn-white" %>
+  <div class="flex items-center justify-between mb-4">
+    <div>
+      <h1 class="h3">Components</h1>
+
+      <div class="text-sm font-medium">
+        <span class="text-gray-500">Sort by:</span>
+        <%= sortable @components, :name, "Name", class: "text-gray-700 mr-1" %>
+        <%= sortable @components, :code, "Code", class: "text-gray-700 mr-1" %>
+        <%= sortable @components, :description, "Description", class: "text-gray-700 mr-1" %>
+        <%= sortable @components, :budget, "Budget", class: "text-gray-700 mr-1" %>
+        <%= sortable @components, :color, "Color", class: "text-gray-700 mr-1" %>
+        <%= sortable @components, :status, "Status", class: "text-gray-700 mr-1" %>
+        <%= sortable @components, :flag, "Flag", class: "text-gray-700 mr-1" %>
+        <%= sortable @components, :parent_id, "Parent", class: "text-gray-700 mr-1" %>
+        <%= sortable @components, :user_id, "User", class: "text-gray-700 mr-1" %>
+        <%= sortable @components, :project_id, "Project", class: "text-gray-700 mr-1" %>
+      </div>
+    </div>
+
+    <%= link_to t("shared.scaffold.new.title", model: "Component"), new_project_component_path(@project), class: "btn btn-white" %>
+  </div>
+
+  <%= tag.div id: ("components" if first_page?), class: "bg-white rounded-md shadow p-6 space-y-8" do %>
+    <%= render partial: "components/index", collection: @components, as: :component, cached: true %>
+
+    <div class="hidden only:flex flex-col items-center justify-between lg:flex-row">
+      <%= image_tag "empty.svg", class: "mb-4 lg:w-1/2" %>
+      <div class="flex-1 text-center">
+        <p class="mb-4 h3">Create your first Component</p>
+        <%= link_to t("shared.scaffold.new.title", model: "Component"), new_component_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @pagy.pages > 1 %>
+    <div class="my-6 text-center">
+      <%== pagy_nav(@pagy) %>
+    </div>
+  <% end %>
+</div>

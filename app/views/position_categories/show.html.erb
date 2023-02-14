@@ -1,0 +1,17 @@
+<%= content_for :title, "Position Categories ##{@position_category.id}" %>
+<%= turbo_stream_from @position_category %>
+
+<div class="container px-4 mx-auto my-8">
+  <div class="flex items-center justify-between mb-4">
+    <h1 class="h3">
+      <%= link_to "Position Categories", position_categories_path, class: "text-black" %>
+      <span class="text-gray-400 font-light mx-2">\</span>
+      Position Category #<%= @position_category.id %>
+    </h1>
+    <%= link_to t("edit"), edit_position_category_path(@position_category), class: "btn btn-white" %>
+  </div>
+
+  <div class="p-8 bg-white rounded shadow">
+    <%= render @position_category %>
+  </div>
+</div>

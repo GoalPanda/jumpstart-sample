@@ -1,0 +1,6 @@
+<div id="<%= dom_id(activity, :index) %>">
+  <%= turbo_stream_from activity %>
+  <%= render activity %>
+  <%= link_to "View", activity, class: "btn btn-white" %>
+</div>
+

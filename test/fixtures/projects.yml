@@ -1,0 +1,83 @@
+# == Schema Information
+#
+# Table name: projects
+#
+#  id             :bigint           not null, primary key
+#  budget         :integer
+#  category       :integer          default(0)
+#  classification :integer          default(0)
+#  code           :string
+#  delivery       :integer          default(0)
+#  duration       :integer
+#  end            :date
+#  group          :integer          default(0)
+#  identificator  :integer
+#  manager        :integer
+#  name           :string
+#  number         :integer
+#  percentage     :integer
+#  routine        :integer          default(0)
+#  scale          :integer          default(0)
+#  sorting        :integer          default(0)
+#  start          :date
+#  status         :integer
+#  supervisor     :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  account_id     :bigint           not null
+#  project_id     :integer
+#
+# Indexes
+#
+#  index_projects_on_account_id  (account_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (account_id => accounts.id)
+#
+
+one:
+  project_id: 1
+  identificator: 1
+  budget: 1
+  category: 1
+  classification: 1
+  group: 1
+  number: 1
+  name: MyString
+  code: MyString
+  start: 2022-10-17
+  end: 2022-10-17
+  duration: 1
+  routine: 1
+  delivery: 1
+  scale: 1
+  sorting: 1
+  status: 1
+  percentage: 1
+  manager: 1
+  supervisor: 1
+  account: one
+
+two:
+  project_id: 1
+  identificator: 1
+  budget: 1
+  category: 1
+  classification: 1
+  group: 1
+  number: 1
+  name: MyString
+  code: MyString
+  start: 2022-10-17
+  end: 2022-10-17
+  duration: 1
+  routine: 1
+  delivery: 1
+  scale: 1
+  sorting: 1
+  status: 1
+  percentage: 1
+  manager: 1
+  supervisor: 1
+  account: two

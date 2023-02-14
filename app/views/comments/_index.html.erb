@@ -1,0 +1,6 @@
+<div id="<%= dom_id(comment, :index) %>">
+  <%= turbo_stream_from comment %>
+  <%= render comment %>
+  <%= link_to "View", comment, class: "btn btn-white" %>
+</div>
+

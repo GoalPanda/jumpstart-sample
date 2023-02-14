@@ -1,0 +1,2 @@
+json.extract! employee_position, :id, :identificator, :group, :positionCategory, :positionClassification, :positionType, :positionCostAuto, :positionCostFixed, :positionCosDefiner, :positionDescriptionAuto, :positionDescriptionFixed, :positionDescriptionDefiner, :positionItem, :positionCost, :position_group_id, :created_at, :updated_at
+json.url position_group_employee_position_url(employee_position, format: :json)

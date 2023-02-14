@@ -1,0 +1,17 @@
+<%= content_for :title, "Position Groups ##{@position_group.id}" %>
+<%= turbo_stream_from @position_group %>
+
+<div class="container px-4 mx-auto my-8">
+  <div class="flex items-center justify-between mb-4">
+    <h1 class="h3">
+      <%= link_to "Position Groups", position_groups_path, class: "text-black" %>
+      <span class="text-gray-400 font-light mx-2">\</span>
+      Position Group #<%= @position_group.id %>
+    </h1>
+    <%= link_to t("edit"), edit_position_group_path(@position_group), class: "btn btn-white" %>
+  </div>
+
+  <div class="p-8 bg-white rounded shadow">
+    <%= render @position_group %>
+  </div>
+</div>
